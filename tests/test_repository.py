@@ -47,3 +47,45 @@ def test_stores_work_together():
     assert repo.entities.get("en1") == ent
     assert repo.edges.get("ed1") == ed
     assert repo.reviews.get("r1") == rv
+
+
+def test_repository_add_wrappers_return_record():
+    repo = ForesightGraphRepository()
+    now = datetime.now()
+
+    s = SourceRecord("src1", "Title", "article", "/path", now)
+    e = EvidenceRecord("ev1", "src1", "loc", "excerpt", now)
+    cl = ClaimRecord("cl1", "ev1", "A claim", 0.5, "pending", now)
+    ent = EntityRecord("en1", "Name", "type", ["alias"], now)
+    ed = EdgeRecord("ed1", "en1", "en1", "rel", "ev1", now)
+    rv = ReviewRecord("r1", "cl1", "claim", "pending", "rev", "ok", now)
+
+    assert repo.add_source(s) == s
+    assert repo.add_evidence(e) == e
+    assert repo.add_claim(cl) == cl
+    assert repo.add_entity(ent) == ent
+    assert repo.add_edge(ed) == ed
+    assert repo.add_review(rv) == rv
+
+    assert repo.sources.get("src1") == s
+    assert repo.evidence.get("ev1") == e
+    assert repo.claims.get("cl1") == cl
+    assert repo.entities.get("en1") == ent
+    assert repo.edges.get("ed1") == ed
+    assert repo.reviews.get("r1") == rv
+
+
+def test_repository_add_source_duplicate_raises():
+    repo = ForesightGraphRepository()
+    now = datetime.now()
+
+    s = SourceRecord("src1", "Title", "article", "/path", now)
+    repo.add_source(s)
+
+    duplicate = SourceRecord("src1", "Title", "article", "/path", now)
+
+    try:
+        repo.add_source(duplicate)
+        assert False, "Expected ValueError for duplicate source id"
+    except ValueError as exc:
+        assert "already exists" in str(exc)
