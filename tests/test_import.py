@@ -16,6 +16,10 @@ def test_import_package():
     assert hasattr(foresightgraph, "EdgeStore")
     assert hasattr(foresightgraph, "ReviewRecord")
     assert hasattr(foresightgraph, "ReviewStore")
+    assert hasattr(foresightgraph, "repository_to_dict")
+    assert hasattr(foresightgraph, "repository_from_dict")
+    assert hasattr(foresightgraph, "save_repository")
+    assert hasattr(foresightgraph, "load_repository")
 
 
 def test_from_imports_package_exports():
@@ -33,6 +37,10 @@ def test_from_imports_package_exports():
         EdgeStore,
         ReviewRecord,
         ReviewStore,
+        repository_to_dict,
+        repository_from_dict,
+        save_repository,
+        load_repository,
     )
 
     assert ForesightGraphRepository is not None
@@ -48,3 +56,7 @@ def test_from_imports_package_exports():
     assert EdgeStore is not None
     assert ReviewRecord is not None
     assert ReviewStore is not None
+    assert repository_to_dict is not None
+    assert repository_from_dict is not None
+    assert save_repository is not None
+    assert load_repository is not None
