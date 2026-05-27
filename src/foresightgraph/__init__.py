@@ -29,6 +29,8 @@ __all__ = [
     "repository_from_dict",
     "save_repository",
     "load_repository",
+    "load_jsonl_questions",
+    "validate_question_record",
 ]
 
 __version__ = "0.0.0"
