@@ -36,3 +36,55 @@ All changes are reviewed with the following checks:
 3. **Check status**: `git status`
 
 This ensures code quality and prevents unintended changes.
+
+## MVP Modules
+
+This MVP implements a set of small, in-memory stores that form the core data layer:
+
+- **SourceRegistry**: store and retrieve `SourceRecord` entries (source_id, title, type, path, created_at).
+- **EvidenceStore**: manage `EvidenceRecord` items linked to sources (evidence_id, source_id, locator, text_excerpt, created_at).
+- **ClaimStore**: manage `ClaimRecord` items linked to evidence (claim_id, evidence_id, text, confidence, review_status, created_at).
+- **EntityStore**: manage `EntityRecord` entries (entity_id, name, entity_type, aliases, created_at) with alias/name lookup.
+- **EdgeStore**: store `EdgeRecord` relationships between nodes (edge_id, from_id, to_id, edge_type, evidence_id, created_at).
+- **ReviewStore**: simple review records for targets (review_id, target_id, target_type, status, reviewer, comment, created_at).
+- **ForesightGraphRepository**: facade that initializes and exposes all stores as attributes: `sources`, `evidence`, `claims`, `entities`, `edges`, `reviews`.
+
+## Current Test Status
+
+- Test suite: 69 passing tests (local run when this README was updated).
+
+## Quick Example
+
+Minimal example creating the repository and adding a source:
+
+```python
+from datetime import datetime
+from foresightgraph.repository import ForesightGraphRepository
+from foresightgraph.source_registry import SourceRecord
+
+repo = ForesightGraphRepository()
+now = datetime.now()
+src = SourceRecord("src1", "Example Title", "article", "/path/to/src", now)
+repo.sources.add(src)
+
+print(repo.sources.get("src1"))
+```
+
+## Workflow Notes
+
+Typical local workflow:
+
+```bash
+# run tests
+python -m pytest -q
+
+# inspect changes
+git diff --staged --stat
+
+# when ready, stage and commit
+git add <files>
+git commit -m "Add description of changes"
+git push
+```
+
+Follow the project's review steps before pushing changes to the remote.
