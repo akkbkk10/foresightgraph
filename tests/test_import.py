@@ -20,6 +20,8 @@ def test_import_package():
     assert hasattr(foresightgraph, "repository_from_dict")
     assert hasattr(foresightgraph, "save_repository")
     assert hasattr(foresightgraph, "load_repository")
+    assert hasattr(foresightgraph, "load_jsonl_questions")
+    assert hasattr(foresightgraph, "validate_question_record")
 
 
 def test_from_imports_package_exports():
@@ -41,6 +43,8 @@ def test_from_imports_package_exports():
         repository_from_dict,
         save_repository,
         load_repository,
+        load_jsonl_questions,
+        validate_question_record,
     )
 
     assert ForesightGraphRepository is not None
@@ -60,3 +64,5 @@ def test_from_imports_package_exports():
     assert repository_from_dict is not None
     assert save_repository is not None
     assert load_repository is not None
+    assert load_jsonl_questions is not None
+    assert validate_question_record is not None
