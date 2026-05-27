@@ -1,0 +1,64 @@
+{
+  "snapshot_id": "ds_001",
+  "snapshot_name": "Sample Multi-hop Benchmark v0.1",
+  "version": "0.1.0",
+  "questions": [
+    {
+      "question_id": "mhq_001",
+      "question": "What is the relationship between the discovery of penicillin and the development of antibiotics?",
+      "answer_path": [
+        {
+          "entity": "Alexander Fleming",
+          "description": "Scottish bacteriologist who discovered penicillin"
+        },
+        {
+          "entity": "Penicillin",
+          "description": "First antibiotic discovered by Alexander Fleming"
+        },
+        {
+          "entity": "Antibiotics",
+          "description": "Class of drugs that inhibit bacterial growth"
+        }
+      ],
+      "ground_truth_evidence": [
+        "Alexander Fleming discovered penicillin in 1928",
+        "Penicillin was the first antibiotic used in medicine",
+        "The discovery led to the development of many other antibiotics"
+      ],
+      "expected_answer": "Alexander Fleming's discovery of penicillin in 1928 led to the development of antibiotics, as penicillin was the first antibiotic used in medicine and paved the way for many other antibiotics.",
+      "review_status": "approved"
+    },
+    {
+      "question_id": "mhq_002",
+      "question": "How did the invention of the telephone lead to modern telecommunications?",
+      "answer_path": [
+        {
+          "entity": "Alexander Graham Bell",
+          "description": "Inventor of the telephone"
+        },
+        {
+          "entity": "Telephone",
+          "description": "Communication device invented by Alexander Graham Bell"
+        },
+        {
+          "entity": "Modern Telecommunications",
+          "description": "Advanced communication systems including mobile networks"
+        }
+      ],
+      "ground_truth_evidence": [
+        "Alexander Graham Bell invented the telephone in 1876",
+        "The telephone technology formed the basis for modern communication networks",
+        "Subsequent innovations built upon the telephone concept to create mobile and internet communications"
+      ],
+      "expected_answer": "Alexander Graham Bell's invention of the telephone in 1876 laid the foundation for modern telecommunications, as the telephone technology formed the basis for modern communication networks and subsequent innovations built upon the telephone concept to create mobile and internet communications.",
+      "review_status": "approved"
+    }
+  ],
+  "created_at": "2024-01-15T10:30:00Z",
+  "created_by": "human_reviewer_001",
+  "description": "Sample dataset snapshot for demonstration purposes only. This is example data, not real benchmark data.",
+  "review_status": "approved",
+  "tags": ["sample", "benchmark", "multi-hop", "v0.1"],
+  "source_context": "Derived from multi-hop question golden set v0.1",
+  "dependencies": []
+}
