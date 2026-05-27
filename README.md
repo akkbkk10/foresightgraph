@@ -70,6 +70,23 @@ repo.sources.add(src)
 print(repo.sources.get("src1"))
 ```
 
+## JSON Persistence Example
+
+Example showing direct imports from foresightgraph for JSON persistence:
+
+```python
+from foresightgraph import ForesightGraphRepository, save_repository, load_repository
+
+# Create repository
+repo = ForesightGraphRepository()
+
+# Save to JSON file
+save_repository(repo, "my_repository.json")
+
+# Load from JSON file
+loaded_repo = load_repository("my_repository.json")
+```
+
 ## Workflow Notes
 
 Typical local workflow:
