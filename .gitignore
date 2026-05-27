@@ -7,8 +7,15 @@ venv/
 .env
 dist/
 build/
+*.egg-info/
+src/*.egg-info/
+
 .DS_Store
 
 # Data
 data/*
 !data/.gitkeep
+
+
+
+
