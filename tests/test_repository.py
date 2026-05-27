@@ -1,0 +1,49 @@
+"""Tests for the ForesightGraphRepository facade."""
+from datetime import datetime
+from foresightgraph.repository import ForesightGraphRepository
+from foresightgraph.source_registry import SourceRecord
+from foresightgraph.evidence_store import EvidenceRecord
+from foresightgraph.claim_store import ClaimRecord
+from foresightgraph.entity_store import EntityRecord
+from foresightgraph.edge_store import EdgeRecord
+from foresightgraph.review_store import ReviewRecord
+
+
+def test_repository_initializes():
+    repo = ForesightGraphRepository()
+    assert repo.sources is not None
+    assert repo.evidence is not None
+    assert repo.claims is not None
+    assert repo.entities is not None
+    assert repo.edges is not None
+    assert repo.reviews is not None
+
+
+def test_stores_work_together():
+    repo = ForesightGraphRepository()
+    now = datetime.now()
+
+    s = SourceRecord("src1", "Title", "article", "/path", now)
+    repo.sources.add(s)
+
+    e = EvidenceRecord("ev1", "src1", "loc", "excerpt", now)
+    repo.evidence.add(e)
+
+    cl = ClaimRecord("cl1", "ev1", "A claim", 0.5, "pending", now)
+    repo.claims.add(cl)
+
+    ent = EntityRecord("en1", "Name", "type", ["alias"], now)
+    repo.entities.add(ent)
+
+    ed = EdgeRecord("ed1", "en1", "en1", "rel", "ev1", now)
+    repo.edges.add(ed)
+
+    rv = ReviewRecord("r1", "cl1", "claim", "pending", "rev", "ok", now)
+    repo.reviews.add(rv)
+
+    assert repo.sources.get("src1") == s
+    assert repo.evidence.get("ev1") == e
+    assert repo.claims.get("cl1") == cl
+    assert repo.entities.get("en1") == ent
+    assert repo.edges.get("ed1") == ed
+    assert repo.reviews.get("r1") == rv
