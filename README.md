@@ -47,7 +47,7 @@ This MVP implements a set of small, in-memory stores that form the core data lay
 - **EntityStore**: manage `EntityRecord` entries (entity_id, name, entity_type, aliases, created_at) with alias/name lookup.
 - **EdgeStore**: store `EdgeRecord` relationships between nodes (edge_id, from_id, to_id, edge_type, evidence_id, created_at).
 - **ReviewStore**: simple review records for targets (review_id, target_id, target_type, status, reviewer, comment, created_at).
-- **ForesightGraphRepository**: facade that initializes and exposes all stores as attributes: `sources`, `evidence`, `claims`, `entities`, `edges`, `reviews`.
+- **ForesightGraphRepository**: facade that initializes and exposes all stores as attributes: `sources`, `evidence`, `claims`, `entities`, `edges`, `reviews`, `signals`.
 - **SignalStore**: store and manage `RelationshipSignalRecord` items with indexing capabilities (signal_id, source_company, target_company, relationship_type, signal_category, orientation, evidence_ids, confidence, signal_strength, status, observed_at, last_verified_at, review_due_at).
 
 ## SignalStore Documentation
@@ -73,6 +73,10 @@ The `signal_id` field is required and stable because:
 - **update**: Update an existing signal record
 - **delete**: Remove a signal record from the store
 
+### SignalStore integration with ForesightGraphRepository
+- **repo.signals**: Access the SignalStore instance through the repository facade
+- **repo.add_signal()**: Add a signal record via the repository facade, delegating to SignalStore.add()
+
 ### Testing Requirements
 After any changes to the documentation, pytest must pass to ensure all functionality remains intact.
 
@@ -97,9 +101,74 @@ repo.sources.add(src)
 print(repo.sources.get("src1"))
 ```
 
+### SignalStore Usage Example
+
+```python
+from foresightgraph.repository import ForesightGraphRepository
+from foresightgraph.signal_store import RelationshipSignalRecord
+from datetime import datetime
+
+repo = ForesightGraphRepository()
+now = datetime.now()
+
+# Add a signal using the repository facade
+signal = RelationshipSignalRecord(
+    signal_id="sig1",
+    source_company="Company A",
+    target_company="Company B",
+    relationship_type="partnership",
+    signal_category="commercial_deal_signal",
+    orientation="partnership_likely",
+    evidence_ids=["e1"],
+    confidence="high",
+    signal_strength=7,
+    status="confirmed_partnership",
+    observed_at=now,
+    last_verified_at=None,
+    review_due_at=now
+)
+
+repo.add_signal(signal)
+print(repo.signals.get("sig1"))
+```
+
+```python
+from datetime import datetime
+from foresightgraph.repository import ForesightGraphRepository
+from foresightgraph.source_registry import SourceRecord
+
+repo = ForesightGraphRepository()
+now = datetime.now()
+src = SourceRecord("src1", "Example Title", "article", "/path/to/src", now)
+repo.sources.add(src)
+
+print(repo.sources.get("src1"))
+```
+
 ## JSON Persistence Example
 
 Example showing direct imports from foresightgraph for JSON persistence:
+
+```python
+from foresightgraph import ForesightGraphRepository, save_repository, load_repository
+
+# Create repository
+repo = ForesightGraphRepository()
+
+# Save to JSON file
+save_repository(repo, "my_repository.json")
+
+# Load from JSON file
+loaded_repo = load_repository("my_repository.json")
+```
+
+## Package Imports
+
+The following imports are available at the package level:
+
+```python
+from foresightgraph import SignalStore, RelationshipSignalRecord
+```
 
 ```python
 from foresightgraph import ForesightGraphRepository, save_repository, load_repository
