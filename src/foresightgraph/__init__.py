@@ -8,6 +8,7 @@ from .review_store import ReviewRecord, ReviewStore
 from .source_registry import SourceRecord, SourceRegistry
 from .persistence import repository_to_dict, repository_from_dict, save_repository, load_repository
 from .eval_questions import load_jsonl_questions, validate_question_record
+from .relationship_signals import RelationshipSignalRecord
 
 __all__ = [
     "__version__",
