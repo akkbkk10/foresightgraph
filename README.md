@@ -48,10 +48,37 @@ This MVP implements a set of small, in-memory stores that form the core data lay
 - **EdgeStore**: store `EdgeRecord` relationships between nodes (edge_id, from_id, to_id, edge_type, evidence_id, created_at).
 - **ReviewStore**: simple review records for targets (review_id, target_id, target_type, status, reviewer, comment, created_at).
 - **ForesightGraphRepository**: facade that initializes and exposes all stores as attributes: `sources`, `evidence`, `claims`, `entities`, `edges`, `reviews`.
+- **SignalStore**: store and manage `RelationshipSignalRecord` items with indexing capabilities (signal_id, source_company, target_company, relationship_type, signal_category, orientation, evidence_ids, confidence, signal_strength, status, observed_at, last_verified_at, review_due_at).
+
+## SignalStore Documentation
+
+### What SignalStore is
+The SignalStore is an in-memory store for managing relationship signal records. It provides CRUD operations and indexing capabilities for relationship signals, enabling efficient querying by source company, target company, signal category, and status.
+
+### Why signal_id exists
+The `signal_id` field is required and stable because:
+- It serves as the primary key for each relationship signal record
+- It ensures unique identification of signals across the system
+- It maintains data integrity and enables reliable referencing
+- It's used as the key in internal data structures for efficient lookups
+
+### Basic SignalStore operations
+- **add**: Add a new relationship signal record to the store
+- **get**: Retrieve a specific signal by its signal_id
+- **list_all**: Retrieve all signals in the store
+- **list_by_source**: List signals by source company
+- **list_by_target**: List signals by target company
+- **list_by_category**: List signals by signal category
+- **list_by_status**: List signals by status
+- **update**: Update an existing signal record
+- **delete**: Remove a signal record from the store
+
+### Testing Requirements
+After any changes to the documentation, pytest must pass to ensure all functionality remains intact.
 
 ## Current Test Status
 
-- Test suite: 69 passing tests (local run when this README was updated).
+- Test suite: 113 passing tests (local run when this README was updated).
 
 ## Quick Example
 
