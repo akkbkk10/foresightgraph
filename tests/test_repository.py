@@ -7,6 +7,7 @@ from foresightgraph.claim_store import ClaimRecord
 from foresightgraph.entity_store import EntityRecord
 from foresightgraph.edge_store import EdgeRecord
 from foresightgraph.review_store import ReviewRecord
+from foresightgraph.signal_store import SignalStore, RelationshipSignalRecord
 
 
 def test_repository_initializes():
@@ -89,3 +90,46 @@ def test_repository_add_source_duplicate_raises():
         assert False, "Expected ValueError for duplicate source id"
     except ValueError as exc:
         assert "already exists" in str(exc)
+
+
+def test_repository_signals_attribute():
+    repo = ForesightGraphRepository()
+    assert hasattr(repo, 'signals')
+    assert isinstance(repo.signals, SignalStore)
+
+
+def test_repository_add_signal_works():
+    repo = ForesightGraphRepository()
+    now = datetime.now()
+    
+    # Test that add_signal method exists and works
+    record = RelationshipSignalRecord(
+        signal_id="sig1",
+        source_company="Company A",
+        target_company="Company B",
+        relationship_type="partnership",
+        signal_category="commercial_deal_signal",
+        orientation="partnership_likely",
+        evidence_ids=["e1"],
+        confidence="high",
+        signal_strength=7,
+        status="confirmed_partnership",
+        observed_at=now,
+        last_verified_at=None,
+        review_due_at=now
+    )
+    
+    result = repo.add_signal(record)
+    assert result == record
+    assert repo.signals.get("sig1") == record
+
+
+def test_package_imports_work():
+    import foresightgraph
+    assert hasattr(foresightgraph, "SignalStore")
+    assert hasattr(foresightgraph, "RelationshipSignalRecord")
+    
+    # Test from imports work
+    from foresightgraph import SignalStore, RelationshipSignalRecord
+    assert SignalStore is not None
+    assert RelationshipSignalRecord is not None

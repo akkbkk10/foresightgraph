@@ -5,6 +5,7 @@ from .claim_store import ClaimStore, ClaimRecord
 from .entity_store import EntityStore, EntityRecord
 from .edge_store import EdgeStore, EdgeRecord
 from .review_store import ReviewStore, ReviewRecord
+from .signal_store import SignalStore, RelationshipSignalRecord
 
 
 class ForesightGraphRepository:
@@ -17,6 +18,7 @@ class ForesightGraphRepository:
         self.entities = EntityStore()
         self.edges = EdgeStore()
         self.reviews = ReviewStore()
+        self.signals = SignalStore()
 
     def add_source(self, record: SourceRecord) -> SourceRecord:
         self.sources.add(record)
@@ -40,4 +42,8 @@ class ForesightGraphRepository:
 
     def add_review(self, record: ReviewRecord) -> ReviewRecord:
         self.reviews.add(record)
+        return record
+
+    def add_signal(self, record: RelationshipSignalRecord) -> RelationshipSignalRecord:
+        self.signals.add(record)
         return record
