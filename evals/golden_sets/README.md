@@ -1,59 +1,50 @@
 # Golden Sets
 
-This directory contains golden sets and dataset snapshots used for evaluating ForesightGraph's reasoning capabilities.
+Golden sets are reviewed reference datasets used for evaluating ForesightGraph's reasoning capabilities. They are not live data or automated truth sources, but rather carefully curated datasets that serve as evaluation indicators.
 
 ## Purpose
 
-Golden sets define the standard benchmarks and evaluation datasets used in ForesightGraph's evaluation protocol. They ensure reproducible and consistent evaluation by providing stable, reviewed datasets that can be traced back to specific data states.
+Golden sets provide stable, reviewed datasets that can be traced back to specific data states. They ensure reproducible and consistent evaluation by serving as standard benchmarks for measuring ForesightGraph's performance.
 
-## Dataset Snapshots
+## Record Format
 
-Dataset snapshots capture the complete state of evaluation data at specific points in time. They ensure reproducible benchmark results by including questions, contexts, answers, and review status information.
+Each golden set record contains the following fields:
 
-### Snapshot Structure
+- **item_id**: Unique identifier for the record
+- **item_type**: Type of item (question, claim, assertion, etc.)
+- **source_ids**: IDs of source documents or references
+- **evidence_ids**: IDs of supporting evidence or citations
+- **question_or_claim**: The actual question or claim being evaluated
+- **expected_answer_or_label**: The expected answer or classification
+- **required_citations**: Citations required for the answer
+- **review_status**: Review status (draft, reviewed, approved, etc.)
+- **reviewer_notes**: Notes from the review process
 
-Each snapshot follows the schema defined in `dataset_snapshot_schema.md` and contains:
-- A unique identifier and version
-- A collection of questions following the multi-hop question schema
-- Metadata about creation and review status
-- Tags and source context information
+## Review Rules
 
-### Relationship to Multi-Hop Questions
+- All records must undergo human review before approval
+- Review status must be clearly documented
+- Reviewer notes should explain evaluation decisions
+- Only approved records should be used for official benchmark results
 
-Dataset snapshots are built from the multi-hop questions defined in the parent `evals/multi_hop_questions/` directory. Each snapshot references questions from this collection but provides a complete, reviewed, and versioned dataset for benchmarking.
+## Quality Checks
 
-## Usage Guidelines
+- Records must be internally consistent
+- Answers must be clearly supported by provided evidence
+- Citations must be accurate and complete
+- Questions must be well-formed and unambiguous
+- All required fields must be populated
 
-### For Evaluation
+## Out-of-Scope Items
 
-- Only use snapshots marked as "approved" for official benchmark results
-- All benchmark results must include human review documentation
-- No real benchmark result should be claimed without proper review and approval
-- Snapshots must be referenced in any evaluation reports to ensure reproducibility
+The following items are explicitly out of scope for golden sets:
 
-### For Development
-
-- Use sample snapshots for testing and development
-- Create new snapshots following the established schema
-- Maintain version control of snapshot sets
-- Ensure all snapshots undergo human review before approval
-
-## Snapshot Naming Convention
-
-Snapshots should be named following this pattern:
-- `snapshot_vX.Y.Z.json` - for versioned snapshots
-- `sample_snapshot_vX.Y.Z.json` - for sample snapshots
-- `benchmark_snapshot_vX.Y.Z.json` - for official benchmark snapshots
-
-Where X.Y.Z represents the semantic version number.
+- Real-time market data or live information
+- Unverified claims or speculative statements
+- Personal opinions or subjective judgments
+- Information that could cause legal or regulatory issues
+- Content that violates privacy or confidentiality requirements
 
 ## Important Notes
 
-1. **Human Review Required**: All snapshots must undergo human review before being marked as "approved"
-2. **Reproducibility**: Snapshots must be sufficient to reproduce the exact same benchmark results
-3. **No Real Facts**: Snapshots should not contain real market, company, legal, or investment facts to avoid potential issues
-4. **Future Work**: GraphRAG, Vector DB, and full RAGAS automation are future work and should not be implemented now
-
-## Current Snapshots
-
-- `sample_dataset_snapshot_v0.1.json` - Sample snapshot for demonstration purposes
+Metrics and golden sets are evaluation indicators, not absolute truth. They provide a standardized way to measure performance but should not be treated as definitive or final answers. All evaluation results must include human review documentation and should not be claimed without proper review and approval.
