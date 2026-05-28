@@ -1,6 +1,6 @@
 from dataclasses import is_dataclass, fields
 from datetime import datetime
-from typing import Any, Type
+from typing import Any, Type, get_origin, get_args, Union
 
 
 def record_to_dict(record: Any) -> dict:
@@ -56,8 +56,15 @@ def record_from_dict(record_type: Type[Any], data: dict) -> Any:
             kwargs[name] = None
             continue
 
-        # handle datetime
-        if f.type is datetime or getattr(f.type, "__name__", None) == "datetime":
+        # Check if this is a datetime field (handles both datetime and Optional[datetime])
+        is_datetime_field = (
+            f.type is datetime or 
+            getattr(f.type, "__name__", None) == "datetime" or
+            (get_origin(f.type) is Union and any(arg is datetime for arg in get_args(f.type))) or
+            (get_origin(f.type) is type(None) and get_args(f.type) and get_args(f.type)[0] is datetime)
+        )
+
+        if is_datetime_field:
             if isinstance(val, str):
                 try:
                     kwargs[name] = datetime.fromisoformat(val)

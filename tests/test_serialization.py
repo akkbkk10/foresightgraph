@@ -8,6 +8,7 @@ from foresightgraph import (
     EntityRecord,
     EdgeRecord,
     ReviewRecord,
+    RelationshipSignalRecord,
 )
 from foresightgraph.serialization import record_to_dict, record_from_dict
 
@@ -71,3 +72,131 @@ def test_review_record_serialization():
 def test_record_from_dict_unsupported_type_raises():
     with pytest.raises(TypeError):
         record_from_dict(int, {})
+
+
+def test_relationship_signal_record_serialization():
+    """Test that RelationshipSignalRecord works with existing serialization helpers."""
+    now = datetime.now()
+    last_verified = datetime(2023, 1, 15, 10, 30, 0)
+    review_due = datetime(2023, 2, 1, 14, 0, 0)
+    
+    # Create a valid RelationshipSignalRecord
+    record = RelationshipSignalRecord(
+        source_company="Company A",
+        target_company="Company B",
+        relationship_type="partnership",
+        signal_category="ecosystem_signal",
+        orientation="partnership_likely",
+        evidence_ids=["e1", "e2", "e3"],
+        confidence="high",
+        signal_strength=8,
+        status="watch",
+        observed_at=now,
+        last_verified_at=last_verified,
+        review_due_at=review_due
+    )
+    
+    # Test record_to_dict
+    data = record_to_dict(record)
+    
+    # Verify datetime fields are serialized as ISO strings
+    assert isinstance(data["observed_at"], str)
+    assert data["observed_at"] == now.isoformat()
+    assert isinstance(data["last_verified_at"], str)
+    assert data["last_verified_at"] == last_verified.isoformat()
+    assert isinstance(data["review_due_at"], str)
+    assert data["review_due_at"] == review_due.isoformat()
+    
+    # Verify evidence_ids is preserved
+    assert data["evidence_ids"] == ["e1", "e2", "e3"]
+    
+    # Verify signal fields are preserved
+    assert data["source_company"] == "Company A"
+    assert data["target_company"] == "Company B"
+    assert data["relationship_type"] == "partnership"
+    assert data["signal_category"] == "ecosystem_signal"
+    assert data["orientation"] == "partnership_likely"
+    assert data["confidence"] == "high"
+    assert data["signal_strength"] == 8
+    assert data["status"] == "watch"
+    
+    # Test record_from_dict
+    restored_record = record_from_dict(RelationshipSignalRecord, data)
+    
+    # Verify the restored record has matching important fields
+    assert restored_record.source_company == "Company A"
+    assert restored_record.target_company == "Company B"
+    assert restored_record.relationship_type == "partnership"
+    assert restored_record.signal_category == "ecosystem_signal"
+    assert restored_record.orientation == "partnership_likely"
+    assert restored_record.evidence_ids == ["e1", "e2", "e3"]
+    assert restored_record.confidence == "high"
+    assert restored_record.signal_strength == 8
+    assert restored_record.status == "watch"
+    assert restored_record.observed_at == now
+    assert restored_record.last_verified_at == last_verified
+    assert restored_record.review_due_at == review_due
+
+
+def test_relationship_signal_record_serialization_with_none_last_verified():
+    """Test that RelationshipSignalRecord works with last_verified_at=None."""
+    now = datetime.now()
+    review_due = datetime(2023, 2, 1, 14, 0, 0)
+    
+    # Create a RelationshipSignalRecord with last_verified_at=None
+    record = RelationshipSignalRecord(
+        source_company="Company A",
+        target_company="Company B",
+        relationship_type="partnership",
+        signal_category="ecosystem_signal",
+        orientation="partnership_likely",
+        evidence_ids=["e1", "e2"],
+        confidence="medium",
+        signal_strength=5,
+        status="unverified",
+        observed_at=now,
+        last_verified_at=None,
+        review_due_at=review_due
+    )
+    
+    # Test record_to_dict
+    data = record_to_dict(record)
+    
+    # Verify datetime fields are serialized as ISO strings
+    assert isinstance(data["observed_at"], str)
+    assert data["observed_at"] == now.isoformat()
+    assert isinstance(data["review_due_at"], str)
+    assert data["review_due_at"] == review_due.isoformat()
+    
+    # Verify last_verified_at is None in serialized data
+    assert data["last_verified_at"] is None
+    
+    # Verify evidence_ids is preserved
+    assert data["evidence_ids"] == ["e1", "e2"]
+    
+    # Verify signal fields are preserved
+    assert data["source_company"] == "Company A"
+    assert data["target_company"] == "Company B"
+    assert data["relationship_type"] == "partnership"
+    assert data["signal_category"] == "ecosystem_signal"
+    assert data["orientation"] == "partnership_likely"
+    assert data["confidence"] == "medium"
+    assert data["signal_strength"] == 5
+    assert data["status"] == "unverified"
+    
+    # Test record_from_dict
+    restored_record = record_from_dict(RelationshipSignalRecord, data)
+    
+    # Verify the restored record has matching important fields
+    assert restored_record.source_company == "Company A"
+    assert restored_record.target_company == "Company B"
+    assert restored_record.relationship_type == "partnership"
+    assert restored_record.signal_category == "ecosystem_signal"
+    assert restored_record.orientation == "partnership_likely"
+    assert restored_record.evidence_ids == ["e1", "e2"]
+    assert restored_record.confidence == "medium"
+    assert restored_record.signal_strength == 5
+    assert restored_record.status == "unverified"
+    assert restored_record.observed_at == now
+    assert restored_record.last_verified_at is None
+    assert restored_record.review_due_at == review_due
