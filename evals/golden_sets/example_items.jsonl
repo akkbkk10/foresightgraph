@@ -1,0 +1,33 @@
+{
+  "item_id": "example_001",
+  "item_type": "question",
+  "source_ids": ["source_fictional_001"],
+  "evidence_ids": ["evidence_fictional_001"],
+  "question_or_claim": "What is the capital of France?",
+  "expected_answer_or_label": "Paris",
+  "required_citations": ["source_fictional_001"],
+  "review_status": "reviewed",
+  "reviewer_notes": "Factual question example for demonstration purposes"
+}
+{
+  "item_id": "example_002",
+  "item_type": "claim",
+  "source_ids": ["source_fictional_002"],
+  "evidence_ids": ["evidence_fictional_002", "evidence_fictional_003"],
+  "question_or_claim": "Company X has achieved 25% revenue growth in the last quarter",
+  "expected_answer_or_label": "true",
+  "required_citations": ["source_fictional_002"],
+  "review_status": "reviewed",
+  "reviewer_notes": "Claim verification example for demonstration purposes"
+}
+{
+  "item_id": "example_003",
+  "item_type": "question",
+  "source_ids": ["source_fictional_003"],
+  "evidence_ids": ["evidence_fictional_004", "evidence_fictional_005", "evidence_fictional_006"],
+  "question_or_claim": "What are the implications of quantum computing on current encryption methods?",
+  "expected_answer_or_label": "Quantum computing poses significant challenges to current encryption methods",
+  "required_citations": ["source_fictional_003"],
+  "review_status": "reviewed",
+  "reviewer_notes": "Multi-hop question example for demonstration purposes"
+}
