@@ -1,43 +1,31 @@
-# ForesightGraph Methodology & Hypotheses
+# Methodology Scaffold: Initial Hypotheses
 
-## MVP Hypotheses
+This document contains the initial v0.1 methodology hypotheses for ForesightGraph. These are minimal scaffold hypotheses to guide early experimentation and evaluation.
 
-### H1: Knowledge Graph Structure Improves Information Retrieval
-**Hypothesis:** Using a structured knowledge graph representation significantly improves the speed and accuracy of information retrieval compared to flat text storage.
-**Metric:** Average query response time and precision@k for semantic searches
-**MVP Test:** Compare query performance between JSON-persisted graph and flat text search in same dataset
+## Hypothesis 1: Evidence-first Hallucination Reduction
+- **ID**: HYP-001
+- **Short Hypothesis**: Implementing evidence-first prompting strategies will reduce hallucinations in generated responses by 30% compared to baseline approaches.
+- **Metric**: Hallucination rate measured as percentage of factually incorrect claims in generated responses
+- **MVP Test Idea**: Deploy evidence-first prompting on a subset of eval questions and compare response quality against baseline prompting using human evaluation
+- **Acceptance Note**: If evidence-first prompting shows statistically significant improvement in hallucination reduction, proceed to full evaluation
 
-### H2: Entity Linking Reduces Ambiguity
-**Hypothesis:** Automatic entity linking and disambiguation reduces semantic ambiguity by 40% in knowledge graph queries.
-**Metric:** Percentage reduction in ambiguous query results
-**MVP Test:** Measure ambiguity in query results before/after entity linking using sample dataset
+## Hypothesis 2: Multi-hop Question Answering
+- **ID**: HYP-002
+- **Short Hypothesis**: Multi-hop question answering capabilities will improve response accuracy by 25% when dealing with complex queries requiring information synthesis.
+- **Metric**: Accuracy of multi-hop answers measured as percentage of correctly synthesized information
+- **MVP Test Idea**: Test with 20 multi-hop questions from golden sets and measure accuracy against baseline approaches
+- **Acceptance Note**: If multi-hop capability shows measurable improvement in accuracy, proceed to broader evaluation
 
-### H3: Graph Traversal Enhances Discovery
-**Hypothesis:** Graph traversal algorithms enable 3x more relevant information discovery compared to traditional search methods.
-**Metric:** Number of relevant connections found per query
-**MVP Test:** Compare discovery rate using graph traversal vs. keyword search on same dataset
+## Hypothesis 3: Citation/Source Accuracy
+- **ID**: HYP-003
+- **Short Hypothesis**: Implementing citation tracking will increase source accuracy in responses by 40% compared to non-citation approaches.
+- **Metric**: Percentage of claims with correct source attribution in generated responses
+- **MVP Test Idea**: Evaluate citation accuracy on 100 sample responses using human verification of source attribution
+- **Acceptance Note**: If citation tracking shows significant improvement in source accuracy, proceed to integration testing
 
-### H4: Multi-hop Reasoning Improves Complex Query Resolution
-**Hypothesis:** Multi-hop reasoning capabilities improve resolution of complex queries by 50% compared to single-hop approaches.
-**Metric:** Accuracy of complex query resolution
-**MVP Test:** Test complex queries with known answers using graph traversal vs. direct search
-
-### H5: Dynamic Knowledge Updates Maintain Consistency
-**Hypothesis:** Dynamic knowledge updates maintain graph consistency and prevent contradictions.
-**Metric:** Graph consistency score and contradiction detection rate
-**MVP Test:** Add multiple related entities and verify consistency in JSON-persisted graph
-
-### H6: Evidence Attribution Increases Trust
-**Hypothesis:** Providing evidence attribution increases user trust in knowledge graph results by 30%.
-**Metric:** User trust score in retrieved information
-**MVP Test:** Survey users on trust levels with and without evidence attribution
-
-### H7: Graph Visualization Improves Comprehension
-**Hypothesis:** Graph visualization tools improve user comprehension of knowledge relationships by 40%.
-**Metric:** Time to understand relationships and accuracy of relationship identification
-**MVP Test:** Compare comprehension time and accuracy between text-only and visual representations
-
-### H8: Collaborative Knowledge Building Enhances Quality
-**Hypothesis:** Collaborative knowledge building features improve knowledge quality by 25% compared to individual contributions.
-**Metric:** Knowledge quality score based on consistency, completeness, and relevance
-**MVP Test:** Compare knowledge quality metrics between individual and collaborative editing sessions
+## Hypothesis 4: RAG vs Wiki Baseline Comparison
+- **ID**: HYP-004
+- **Short Hypothesis**: Retrieval-Augmented Generation (RAG) approach will outperform wiki baseline approach by 35% in answer quality for factual questions.
+- **Metric**: Answer quality measured using human evaluation scoring (1-5 scale)
+- **MVP Test Idea**: Run controlled comparison between RAG and wiki baseline on shared question set with human evaluation scoring
+- **Acceptance Note**: If RAG shows statistically significant improvement over wiki baseline, proceed to full implementation
