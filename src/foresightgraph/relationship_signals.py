@@ -44,6 +44,7 @@ STATUSES = {
 @dataclass
 class RelationshipSignalRecord:
     """Minimal validation for relationship signals based on methodology requirements."""
+    signal_id: str
     source_company: str
     target_company: str
     relationship_type: str
@@ -59,6 +60,10 @@ class RelationshipSignalRecord:
     
     def __post_init__(self):
         """Validate required fields and constraints."""
+        # Validate signal_id is not empty
+        if not self.signal_id or not self.signal_id.strip():
+            raise ValueError("signal_id cannot be empty")
+        
         # Validate required fields are not empty
         if not self.source_company or not self.source_company.strip():
             raise ValueError("source_company cannot be empty")

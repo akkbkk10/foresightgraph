@@ -79,9 +79,10 @@ def test_relationship_signal_record_serialization():
     now = datetime.now()
     last_verified = datetime(2023, 1, 15, 10, 30, 0)
     review_due = datetime(2023, 2, 1, 14, 0, 0)
-    
+
     # Create a valid RelationshipSignalRecord
     record = RelationshipSignalRecord(
+        signal_id="signal-123",
         source_company="Company A",
         target_company="Company B",
         relationship_type="partnership",
@@ -145,6 +146,7 @@ def test_relationship_signal_record_serialization_with_none_last_verified():
     
     # Create a RelationshipSignalRecord with last_verified_at=None
     record = RelationshipSignalRecord(
+        signal_id="signal-123",
         source_company="Company A",
         target_company="Company B",
         relationship_type="partnership",
