@@ -285,3 +285,65 @@ class TestSignalStore:
         store.delete("signal-123")
         store.add(sample_record)  # Should work fine
         assert store.get("signal-123") == sample_record
+
+    def test_update_index_maintenance(self, store, sample_record):
+        """Test that update maintains indexes correctly."""
+        store.add(sample_record)
+        
+        # Update the record with different category and status
+        updated_record = RelationshipSignalRecord(
+            signal_id="signal-123",
+            source_company="Company A",
+            target_company="Company B",
+            relationship_type="strategic_partnership",
+            signal_category="acquisition_interest_signal",  # Changed category
+            orientation="partnership_likely",
+            evidence_ids=["evidence1", "evidence2"],
+            confidence="high",
+            signal_strength=8,
+            status="confirmed_partnership",  # Changed status
+            observed_at=datetime.now(),
+            last_verified_at=None,
+            review_due_at=datetime.now()
+        )
+        
+        store.update(updated_record)
+        
+        # Verify old category no longer returns the record
+        old_category_results = store.list_by_category("ecosystem_signal")
+        assert sample_record not in old_category_results
+        
+        # Verify new category does return the record
+        new_category_results = store.list_by_category("acquisition_interest_signal")
+        assert updated_record in new_category_results
+        
+        # Verify old status no longer returns the record
+        old_status_results = store.list_by_status("watch")
+        assert sample_record not in old_status_results
+        
+        # Verify new status does return the record
+        new_status_results = store.list_by_status("confirmed_partnership")
+        assert updated_record in new_status_results
+
+    def test_delete_index_maintenance(self, store, sample_record):
+        """Test that delete maintains indexes correctly."""
+        store.add(sample_record)
+        
+        # Delete the record
+        store.delete("signal-123")
+        
+        # Verify list_by_source no longer returns the record
+        source_results = store.list_by_source("Company A")
+        assert sample_record not in source_results
+        
+        # Verify list_by_target no longer returns the record
+        target_results = store.list_by_target("Company B")
+        assert sample_record not in target_results
+        
+        # Verify list_by_category no longer returns the record
+        category_results = store.list_by_category("ecosystem_signal")
+        assert sample_record not in category_results
+        
+        # Verify list_by_status no longer returns the record
+        status_results = store.list_by_status("watch")
+        assert sample_record not in status_results
