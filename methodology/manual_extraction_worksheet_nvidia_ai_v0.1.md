@@ -50,7 +50,7 @@ Prepare manual extraction from selected real sources for the first real-source d
 - **claim_text**: NVIDIA states on its Blackwell Architecture page that Blackwell GPUs pack 208 billion transistors.
 - **claim_status**: manufacturer_claim
 - **project_status**: not_reproduced
-- **review_status**: needs_review
+- **review_status**: reviewed_vendor_claim_only
 - **notes**: This is a vendor-source claim candidate based only on the copied excerpt. It is not independently verified by the project.
 
 ### Claim Candidate 2
@@ -59,7 +59,7 @@ Prepare manual extraction from selected real sources for the first real-source d
 - **claim_text**: NVIDIA states that the Second-Generation Transformer Engine is intended to accelerate inference and training for large language models.
 - **claim_status**: manufacturer_claim
 - **project_status**: not_reproduced
-- **review_status**: needs_review
+- **review_status**: reviewed_vendor_claim_only
 - **notes**: This is a vendor-source claim candidate based only on the copied excerpt. It is not independently verified by the project.
 
 ### Source 2: real_nvidia_ai_003
