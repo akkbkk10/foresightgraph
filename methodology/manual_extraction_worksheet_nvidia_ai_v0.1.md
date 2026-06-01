@@ -79,16 +79,24 @@ Prepare manual extraction from selected real sources for the first real-source d
 - **review_status**: reviewed_vendor_claim_only
 - **reviewer_notes**: Diese Stellen sind relevant, weil sie NIM als produktisierte Software-Schicht für AI-Inferenz beschreiben. Der erste Excerpt belegt den Kernzweck: optimierte Inferenz-Microservices. Der zweite Excerpt belegt die Verpackung als enterprise-grade Container, also eine deploybare Software-Komponente. Daraus entsteht keine Aussage über Umsatz, Marktanteil, Wettbewerbsvorteil oder Investmentqualität.
 
-### Source 3: real_nvidia_ai_004
 - **source_id**: real_nvidia_ai_004
 - **source title**: NVIDIA NeMo
-- **date accessed**: TODO
-- **locator candidates**: TODO
-- **copied excerpt slots**: TODO
-- **possible evidence_id placeholders**: TODO
-- **possible claim_id placeholders**: TODO
-- **review_status**: not_started
-- **reviewer_notes**: TODO
+- **date accessed**: 2026-06-01
+- **locator candidates**: 
+  - Seitentitel "NVIDIA NeMo" / Abschnitt "What Is NVIDIA NeMo?"
+  - Abschnitt "What Is NVIDIA NeMo?"
+- **copied excerpt slots**: 
+  - "agent-first, open suite of libraries"
+  - "integrates with existing AI tools and agent frameworks"
+- **possible evidence_id placeholders**: 
+  - evidence_nvidia_nemo_001
+  - evidence_nvidia_nemo_002
+- **possible claim_id placeholders**: 
+  - claim_candidate_nvidia_nemo_001
+- **source_status**: official_vendor_source
+- **project_status**: not_reproduced
+- **review_status**: reviewed_vendor_claim_only
+- **reviewer_notes**: Diese Stellen sind relevant, weil sie NeMo nicht als einzelnes Modell, sondern als offene Software-Suite für AI-Agenten beschreiben. Der erste Excerpt belegt die Grundpositionierung von NeMo. Der zweite Excerpt belegt die Integrationsrolle mit bestehenden Tools und Agent-Frameworks. Daraus entsteht noch keine Aussage über technische Überlegenheit, Benchmarks, Umsatzwirkung oder Investmentqualität.
 
 ## Manual Extraction Checklist
 - [ ] Verify source page manually

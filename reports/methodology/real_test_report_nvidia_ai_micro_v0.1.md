@@ -15,17 +15,21 @@ manual_extraction_worksheet_nvidia_ai_v0.1
 ## Source Tested
 - real_nvidia_ai_001 - NVIDIA Blackwell Architecture
 - real_nvidia_ai_003 - NVIDIA NIM Microservices
+- real_nvidia_ai_004 - NVIDIA NeMo
 
 ## Evidence Drafts Created
 - evidence_nvidia_blackwell_001
 - evidence_nvidia_blackwell_002
 - evidence_nvidia_nim_001
 - evidence_nvidia_nim_002
+- evidence_nvidia_nemo_001
+- evidence_nvidia_nemo_002
 
 ## Claim Candidates Created
 - claim_candidate_nvidia_blackwell_001
 - claim_candidate_nvidia_blackwell_002
 - claim_candidate_nvidia_nim_001
+- claim_candidate_nvidia_nemo_001
 
 ## Result
 PASS for evidence-first workflow mechanics only
