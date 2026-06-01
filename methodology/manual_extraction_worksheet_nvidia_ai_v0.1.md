@@ -28,13 +28,23 @@ Prepare manual extraction from selected real sources for the first real-source d
 ### Source 1: real_nvidia_ai_001
 - **source_id**: real_nvidia_ai_001
 - **source title**: NVIDIA Blackwell Architecture
-- **date accessed**: TODO
-- **locator candidates**: TODO
-- **copied excerpt slots**: TODO
-- **possible evidence_id placeholders**: TODO
-- **possible claim_id placeholders**: TODO
-- **review_status**: not_started
-- **reviewer_notes**: TODO
+- **date accessed**: 2026-06-01
+- **locator candidates**: 
+  - Seitentitel "NVIDIA Blackwell Architecture" / Abschnitt "A New Class of AI Superchip"
+  - Abschnitt "Second-Generation Transformer Engine"
+- **copied excerpt slots**: 
+  - "GPUs pack 208 billion transistors"
+  - "accelerate inference and training for large language models"
+- **possible evidence_id placeholders**: 
+  - evidence_nvidia_blackwell_001
+  - evidence_nvidia_blackwell_002
+- **possible claim_id placeholders**: 
+  - claim_candidate_nvidia_blackwell_001
+  - claim_candidate_nvidia_blackwell_002
+- **source_status**: official_vendor_source
+- **project_status**: not_reproduced
+- **review_status**: needs_review
+- **reviewer_notes**: Diese Stellen sind relevant, weil sie zwei prüfbare technische Evidenzpunkte liefern: erstens die Hardware-Skalierung der Blackwell-GPU (Graphics Processing Unit), zweitens die direkte Ausrichtung auf Training und Inferenz großer Sprachmodelle (Large Language Models, LLMs). Daraus darf noch kein Investment-Claim entstehen, sondern nur ein kontrollierter Evidence Draft.
 
 ### Source 2: real_nvidia_ai_003
 - **source_id**: real_nvidia_ai_003
