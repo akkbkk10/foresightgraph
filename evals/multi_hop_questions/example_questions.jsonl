@@ -1,0 +1,81 @@
+{
+  "question_id": "mhq_001",
+  "question": "What is the relationship between the development of quantum computing and advances in cryptography?",
+  "answer_path": [
+    {
+      "entity": "Quantum Computing",
+      "description": "Computing technology that uses quantum bits and quantum phenomena"
+    },
+    {
+      "entity": "Quantum Algorithms",
+      "description": "Algorithms designed specifically for quantum computers"
+    },
+    {
+      "entity": "Cryptography",
+      "description": "Mathematical methods for information security"
+    }
+  ],
+  "ground_truth_evidence": [
+    "Quantum computing technology emerged in the 1980s with theoretical foundations",
+    "Quantum algorithms like Shor's algorithm can potentially break current cryptographic systems",
+    "The development of quantum computing has led to research into quantum-resistant cryptography"
+  ],
+  "expected_answer": "The development of quantum computing technology in the 1980s with theoretical foundations led to advances in cryptography, as quantum algorithms like Shor's algorithm can potentially break current cryptographic systems and the development of quantum computing has led to research into quantum-resistant cryptography.",
+  "review_status": "draft",
+  "difficulty_level": "advanced",
+  "tags": ["technology", "computer_science", "security"]
+}
+{
+  "question_id": "mhq_002",
+  "question": "How did the discovery of antibiotics influence the development of modern medicine?",
+  "answer_path": [
+    {
+      "entity": "Penicillin",
+      "description": "First widely used antibiotic discovered by Alexander Fleming"
+    },
+    {
+      "entity": "Antibiotic Resistance",
+      "description": "Bacterial adaptation that reduces antibiotic effectiveness"
+    },
+    {
+      "entity": "Modern Medical Treatment",
+      "description": "Contemporary approaches to treating bacterial infections"
+    }
+  ],
+  "ground_truth_evidence": [
+    "Alexander Fleming discovered penicillin in 1928, revolutionizing bacterial infection treatment",
+    "The widespread use of antibiotics led to the emergence of antibiotic-resistant bacteria",
+    "Modern medical treatment now includes strategies for managing antibiotic resistance"
+  ],
+  "expected_answer": "Alexander Fleming's discovery of penicillin in 1928 revolutionized bacterial infection treatment, which led to the development of modern medical treatment approaches that now include strategies for managing antibiotic resistance due to the widespread use of antibiotics leading to the emergence of antibiotic-resistant bacteria.",
+  "review_status": "draft",
+  "difficulty_level": "intermediate",
+  "tags": ["medicine", "history", "health"]
+}
+{
+  "question_id": "mhq_003",
+  "question": "What connection exists between artificial intelligence research and the development of autonomous vehicles?",
+  "answer_path": [
+    {
+      "entity": "Machine Learning",
+      "description": "AI subfield that enables computers to learn from data"
+    },
+    {
+      "entity": "Sensor Fusion",
+      "description": "Integration of data from multiple sensors for decision making"
+    },
+    {
+      "entity": "Autonomous Vehicles",
+      "description": "Vehicles capable of operating without human input"
+    }
+  ],
+  "ground_truth_evidence": [
+    "Machine learning algorithms are fundamental to autonomous vehicle navigation systems",
+    "Sensor fusion techniques combine data from cameras, radar, and lidar for vehicle perception",
+    "The development of autonomous vehicles relies heavily on advances in AI research"
+  ],
+  "expected_answer": "The development of autonomous vehicles relies heavily on advances in AI research, particularly machine learning algorithms that are fundamental to autonomous vehicle navigation systems and sensor fusion techniques that combine data from cameras, radar, and lidar for vehicle perception.",
+  "review_status": "draft",
+  "difficulty_level": "advanced",
+  "tags": ["technology", "artificial_intelligence", "transportation"]
+}
