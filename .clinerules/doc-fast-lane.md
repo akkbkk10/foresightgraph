@@ -50,3 +50,15 @@ git --no-pager log --oneline --max-count=5
 
 **Only this file is modified or untracked:**
 - `.clinerules/doc-fast-lane.md`
+
+## Additional Documentation Scaffold Rules
+
+1. Documentation, JSONL, eval scaffold, and README-only tasks must not modify src/**/*.py.
+2. They must not modify tests/**/*.py unless the prompt explicitly says "Small test-only block".
+3. They must not create helper scripts or temporary Python files.
+4. They must not install or uninstall packages.
+5. They must not create a virtual environment.
+6. JSONL validation must use inline python -c commands, not temporary files.
+7. If schema validation seems to require production-code changes, stop and report instead of implementing.
+8. If any forbidden action seems necessary, stop and ask.
+9. If Cline opens or suggests VS Code environment prompts, virtualenv creation, package installation, or terminal relaunch, do not proceed and report it.
