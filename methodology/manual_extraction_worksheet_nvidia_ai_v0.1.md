@@ -62,16 +62,22 @@ Prepare manual extraction from selected real sources for the first real-source d
 - **review_status**: reviewed_vendor_claim_only
 - **notes**: This is a vendor-source claim candidate based only on the copied excerpt. It is not independently verified by the project.
 
-### Source 2: real_nvidia_ai_003
 - **source_id**: real_nvidia_ai_003
 - **source title**: NVIDIA NIM Microservices
-- **date accessed**: TODO
-- **locator candidates**: TODO
-- **copied excerpt slots**: TODO
-- **possible evidence_id placeholders**: TODO
-- **possible claim_id placeholders**: TODO
-- **review_status**: not_started
-- **reviewer_notes**: TODO
+- **date accessed**: 2026-06-01
+- **locator candidates**: 
+  - Seitentitel "NVIDIA NIM Microservices" / Abschnitt "What Is NVIDIA NIM?"
+  - Abschnitt "Accelerate AI Deployment With NVIDIA NIM"
+- **copied excerpt slots**: 
+  - "prebuilt, optimized inference microservices"
+  - "prepackaged in enterprise-grade software containers ready to deploy and scale anywhere"
+- **possible evidence_id placeholders**: 
+  - evidence_nvidia_nim_001
+  - evidence_nvidia_nim_002
+- **possible claim_id placeholders**: 
+  - claim_candidate_nvidia_nim_001
+- **review_status**: reviewed_vendor_claim_only
+- **reviewer_notes**: Diese Stellen sind relevant, weil sie NIM als produktisierte Software-Schicht für AI-Inferenz beschreiben. Der erste Excerpt belegt den Kernzweck: optimierte Inferenz-Microservices. Der zweite Excerpt belegt die Verpackung als enterprise-grade Container, also eine deploybare Software-Komponente. Daraus entsteht keine Aussage über Umsatz, Marktanteil, Wettbewerbsvorteil oder Investmentqualität.
 
 ### Source 3: real_nvidia_ai_004
 - **source_id**: real_nvidia_ai_004
