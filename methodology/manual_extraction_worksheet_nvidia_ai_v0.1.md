@@ -41,10 +41,26 @@ Prepare manual extraction from selected real sources for the first real-source d
 - **possible claim_id placeholders**: 
   - claim_candidate_nvidia_blackwell_001
   - claim_candidate_nvidia_blackwell_002
-- **source_status**: official_vendor_source
+
+## Claim Candidates
+
+### Claim Candidate 1
+- **claim_id**: claim_candidate_nvidia_blackwell_001
+- **linked_evidence_id**: evidence_nvidia_blackwell_001
+- **claim_text**: NVIDIA states on its Blackwell Architecture page that Blackwell GPUs pack 208 billion transistors.
+- **claim_status**: manufacturer_claim
 - **project_status**: not_reproduced
 - **review_status**: needs_review
-- **reviewer_notes**: Diese Stellen sind relevant, weil sie zwei prüfbare technische Evidenzpunkte liefern: erstens die Hardware-Skalierung der Blackwell-GPU (Graphics Processing Unit), zweitens die direkte Ausrichtung auf Training und Inferenz großer Sprachmodelle (Large Language Models, LLMs). Daraus darf noch kein Investment-Claim entstehen, sondern nur ein kontrollierter Evidence Draft.
+- **notes**: This is a vendor-source claim candidate based only on the copied excerpt. It is not independently verified by the project.
+
+### Claim Candidate 2
+- **claim_id**: claim_candidate_nvidia_blackwell_002
+- **linked_evidence_id**: evidence_nvidia_blackwell_002
+- **claim_text**: NVIDIA states that the Second-Generation Transformer Engine is intended to accelerate inference and training for large language models.
+- **claim_status**: manufacturer_claim
+- **project_status**: not_reproduced
+- **review_status**: needs_review
+- **notes**: This is a vendor-source claim candidate based only on the copied excerpt. It is not independently verified by the project.
 
 ### Source 2: real_nvidia_ai_003
 - **source_id**: real_nvidia_ai_003
