@@ -34,24 +34,24 @@ Per-item citation-accuracy table
 | nvidia_ai_001 | question | [real_nvidia_ai_001] | [evidence_nvidia_blackwell_001] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_001) | PASS_CITATION_BOUND | Answer text matches expected_answer_or_label; required_citations present; draft status preserved. |
 | nvidia_ai_002 | question | [real_nvidia_ai_003] | [evidence_nvidia_nim_001] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_002) | PASS_CITATION_BOUND | Answer text matches expected_answer_or_label; required_citations present; draft status preserved. |
 | nvidia_ai_003 | claim | [real_nvidia_ai_001, real_nvidia_ai_004] | [evidence_nvidia_blackwell_002, evidence_nvidia_nemo_001] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_003) | PASS_CITATION_BOUND | Claim result uses only listed source_ids and evidence_ids; draft status preserved. |
-| nvidia_ai_004 | claim | [real_nvidia_ai_003, real_nvidia_ai_004] | [evidence_nvidia_nim_002, evidence_nvidia_nemo_002] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_004) | PASS_CITATION_BOUND | Claim result uses only listed source_ids and evidence_ids; draft status preserved. |
+| nvidia_ai_004 | claim | [real_nvidia_ai_003, real_nvidia_ai_004] | [evidence_nvidia_nim_002, evidence_nvidia_nemo_002] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_004) | NEEDS_CITATION_FIX | Vendor pages supply deploy/scale phrasing, but wording must remain limited to vendor claims. Must not imply independent production readiness, benchmark performance, reproduced scalability, or operational validation. Human reviewer must confirm narrow final wording before merge. |
 | nvidia_ai_005 | question | [real_nvidia_ai_001, real_nvidia_ai_003, real_nvidia_ai_004] | [evidence_nvidia_blackwell_001, evidence_nvidia_nim_001, evidence_nvidia_nemo_001] | reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md (row for nvidia_ai_005) | PASS_CITATION_BOUND | Multi-source answer matches expected_answer_or_label; required citations present; draft status preserved. |
 
 Findings
 
-- All 5 items are present in evals/golden_sets/real_nvidia_ai_micro_v0.1.jsonl and reference required source_ids and evidence_ids.
-- The generated results in reports/methodology/nvidia_ai_micro_controlled_answer_generation_results_v0.1.md contain answers that match the expected_answer_or_label values from the JSONL for all 5 items.
+- 4 items (nvidia_ai_001, nvidia_ai_002, nvidia_ai_003, nvidia_ai_005) are citation-bound with low overclaim risk and traceable to required source_ids and evidence_ids.
+- nvidia_ai_004 has direct vendor support for deploy/scale phrasing but requires narrower wording and explicit human confirmation before marking as fully citation‑bound; the current wording is conservative but flagged for revision to avoid implying production readiness, benchmarks, or reproduced scalability.
 - Vendor claim status markers (draft/manual-review-only/manufacturer_claim/not_reproduced/reviewed_vendor_claim_only) are present in the JSONL reviewer_notes fields and preserved in the reports.
 - No additional external sources or new factual claims were introduced in the inspected report file.
 
 Issues found
 
 - ForesightGraph_Intelligence_OS_Final_Architecture_Roadmap.md is missing from repository root. This is noted for project completeness but is not a blocker for this task.
-- No citation mismatches, missing citations, or unsupported conclusions were detected in the reviewed files for these 5 items.
+- nvidia_ai_004 requires conservative wording treatment: while vendor pages contain deploy/scale phrasing, the Checklist must not imply production readiness, reproduced scalability, benchmark performance, or operational validation. Human reviewer must confirm narrower wording before merge.
 
 What this check proves
 
-- Traceability: Each generated answer is traceable to the required source_ids and evidence_ids listed in the golden set.
+- Traceability: Each generated answer is traceable to the required source_ids and evidence_ids listed in the golden set. For nvidia_ai_004 this verifies vendor‑claim traceability only, not real‑world deployment or scalability performance.
 - Conservatism: The generated results do not introduce external facts or overclaims beyond the cited evidence.
 - Status preservation: Draft and vendor-claim statuses are preserved across source and report documents.
 
@@ -59,7 +59,7 @@ What this check does not prove
 
 - Independent technical accuracy or factual correctness of vendor claims.
 - Model performance, benchmark results, or extraction reliability.
-- Any commercial, investment, or operational claims.
+- Any commercial, investment, or operational claims, including production readiness or operational scalability.
 
 Recommended next 3 small steps
 
@@ -69,7 +69,7 @@ Recommended next 3 small steps
 
 Recommended immediate next step
 
-- Review-only audit of this citation-accuracy checklist by a human reviewer.
+- Human review should first check nvidia_ai_004 wording narrowness before marking the PR ready for review.
 
 Preserved constraints
 
