@@ -41,4 +41,19 @@ This roadmap defines a practical MVP for ForesightGraph, focused on local eviden
    - Expand docs with implementation notes and examples.
    - Add usage examples for a local research workflow.
 3. Infrastructure
-   - Add CI hooks once the basic Python package and tests are stable.
+   - Initial pytest CI is now present.
+   - Validation guardrails now include real NVIDIA micro golden set structural checks and conservative nvidia_ai_004 cross-document consistency.
+   - Hermes workflow policy, bounded batching policy, and batched-run checklist are documented.
+
+## Current stabilization baseline
+
+- pytest CI workflow exists.
+- real NVIDIA micro golden set structural validation exists.
+- nvidia_ai_004 conservative consistency guard exists.
+- Hermes workflow policy and batched-run checklist exist.
+
+## Next conservative direction
+
+- Expand datasets and methodology only in small, evidence-first steps under existing review gates.
+- Keep provider-neutral design.
+- Do not add provider SDKs, runtime dependencies, or investment/trading claims without separate review.
