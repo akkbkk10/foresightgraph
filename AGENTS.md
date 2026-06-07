@@ -10,3 +10,4 @@
 - Keine Paketinstallationen ohne ausdrückliche Freigabe.
 - Keine externen Dienste, Browser, MCP-Server oder API-Keys verwenden.
 - Nach Änderungen immer `git diff`, Tests und `git status` prüfen.
+- Hermes workflow policy: see docs/HERMES_WORKFLOW_POLICY.md
