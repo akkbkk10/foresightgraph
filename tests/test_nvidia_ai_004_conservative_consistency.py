@@ -42,6 +42,18 @@ BOUNDARY_LIMITATION_TERMS = (
     "not_reproduced",
     "draft",
 )
+CONTROLLED_ALLOWED_TRACEABILITY_STATUSES = (
+    "PASS_EVIDENCE_BOUND",
+    "NEEDS_CITATION_FIX",
+    "NEEDS_MANUAL_REVIEW",
+    "TRACEABILITY_ONLY_REVIEW_REQUIRED",
+)
+MANUAL_ALLOWED_TRACEABILITY_STATUSES = (
+    "PASS_WITH_REVIEWED_EVIDENCE",
+    "NEEDS_CITATION_FIX",
+    "NEEDS_MANUAL_REVIEW",
+    "TRACEABILITY_ONLY_REVIEW_REQUIRED",
+)
 FORBIDDEN_OVERCLAIM_TERMS = (
     "independent production readiness",
     "benchmark performance",
@@ -95,6 +107,13 @@ def _assert_contains_all(text: str, terms: tuple[str, ...]) -> None:
     assert not missing, f"Missing expected terms: {missing}"
 
 
+def _assert_contains_any(text: str, terms: tuple[str, ...]) -> None:
+    text_lower = text.lower()
+    assert any(term.lower() in text_lower for term in terms), (
+        f"Expected one of {terms!r} in text, but none were present"
+    )
+
+
 def _assert_not_contains_any(text: str, forbidden_terms: tuple[str, ...]) -> None:
     text_lower = text.lower()
     present = [term for term in forbidden_terms if term.lower() in text_lower]
@@ -131,12 +150,11 @@ def test_nvidia_ai_004_reports_preserve_traceability_not_verification_boundary()
     controlled_line = _markdown_table_row(controlled_text, ITEM_ID)
     manual_line = _markdown_table_row(manual_text, ITEM_ID)
 
-    assert "PASS_EVIDENCE_BOUND" in controlled_line, (
-        "Controlled report may retain a traceability-style PASS status"
-    )
-    assert "PASS_WITH_REVIEWED_EVIDENCE" in manual_line, (
-        "Manual report may retain a traceability-style PASS status"
-    )
+    # Current reports use PASS-style traceability labels, but future report fixes may
+    # tighten them to stricter conservative statuses. The invariant here is the
+    # traceability-vs-verification boundary, not the exact current PASS label.
+    _assert_contains_any(controlled_line, CONTROLLED_ALLOWED_TRACEABILITY_STATUSES)
+    _assert_contains_any(manual_line, MANUAL_ALLOWED_TRACEABILITY_STATUSES)
 
     _assert_contains_all(controlled_text, BOUNDARY_LIMITATION_TERMS)
     _assert_contains_all(manual_text, (
