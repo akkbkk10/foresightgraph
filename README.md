@@ -4,7 +4,7 @@
 
 ## Status
 
-Private local MVP scaffold. Early-stage development.
+Public early-stage MVP scaffold. Methodology-first development.
 
 ## Core Concept
 
@@ -21,10 +21,10 @@ ForesightGraph is an evidence-first research system that prioritizes sourced inf
 
 ## Testing
 
-Run the test suite:
+Run the current test suite:
 
 ```bash
-python -m pytest tests
+python -m pytest -q
 ```
 
 ## Safety & Workflow Rules
@@ -32,7 +32,7 @@ python -m pytest tests
 All changes are reviewed with the following checks:
 
 1. **Review changes**: `git diff`
-2. **Run tests**: `python -m pytest tests`
+2. **Run tests**: `python -m pytest -q`
 3. **Check status**: `git status`
 
 This ensures code quality and prevents unintended changes.
@@ -82,7 +82,7 @@ After any changes to the documentation, pytest must pass to ensure all functiona
 
 ## Current Test Status
 
-- Test suite: 113 passing tests (local run when this README was updated).
+- Run `python -m pytest -q` for the current test suite.
 
 ## Quick Example
 
