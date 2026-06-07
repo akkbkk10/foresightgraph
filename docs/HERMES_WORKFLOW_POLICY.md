@@ -34,6 +34,70 @@ Hermes wird in ForesightGraph als begrenztes Orchestrations‑ und Ausführungsw
 - Merge von kleinen Dokumentations‑PRs nur nach: (1) Hermes‑Report, (2) ChatGPT‑Review falls angefordert, (3) ausdrücklicher menschlicher Merge‑Bestätigung.
 - Löschen gemergter Feature‑Branches nur nach ausdrücklicher Zustimmung und nach Verifikation, dass keine ungeprüften Änderungen verloren gehen.
 
+## Bounded batching and faster controlled autonomy
+ForesightGraph darf mehrere risikoarme Schritte in einem Hermes‑Prompt bündeln, wenn dies ausdrücklich genehmigt wurde. Ziel ist geringerer Workflow‑Overhead, schnellere operative Ausführung und weniger unnötige Handoffs — nicht schwächere Prüfung, nicht höhere Vertrauensannahmen und nicht weniger menschliche/ChatGPT‑Kontrolle.
+
+### Allowed bundled tasks
+Hermes darf die folgenden Task‑Klassen in einem Run bündeln, wenn dies im Prompt ausdrücklich freigegeben wurde:
+- read-only Repo-Audit + Testlauf + strukturierter Report.
+- kleine Dokumentationsänderung + Tests + Draft-PR-Erstellung.
+- kleine Test-/Validierungsänderung + Tests + Draft-PR-Erstellung.
+- Post-Merge-Verifikation + sicheres Branch-Cleanup.
+- für ausdrücklich genehmigte Low-Risk-PRs: Ready markieren + Merge + Post-Merge-Verifikation + sicheres Branch-Cleanup im selben Run, aber nur wenn jedes einzelne Safety Gate besteht.
+
+### Required gates for bundled tasks
+Auch gebündelte Runs müssen dieselben Kernkontrollen durchlaufen:
+- Repository-Pfad verifiziert.
+- Branch verifiziert.
+- Repository sauber vor Write-, Merge- oder Cleanup-Schritten.
+- Geänderte Dateien entsprechen exakt dem genehmigten Scope.
+- Tests bestehen.
+- JSONL-/Eval-Validierung besteht, wenn relevant.
+- GitHub-Checks sind grün, wenn relevant.
+- Es werden keine Secrets ausgegeben.
+- `.hermes.md` bleibt abwesend, sofern nicht separat genehmigt.
+- Es erscheinen keine nicht genehmigten Dateiveränderungen.
+- Finaler `git status` ist sauber.
+
+### Stop conditions for bundled tasks
+Hermes MUSS stoppen und berichten, wenn:
+- irgendein Gate fehlschlägt.
+- nicht genehmigte Dateiveränderungen auftauchen.
+- Tests fehlschlagen.
+- GitHub-Checks fehlschlagen.
+- der Task Dependencies, CI, Architektur, Provider, Hermes-Konfiguration, MCP, Skills, Cron, Memory, Plugins oder Runtime-Änderungen außerhalb des genehmigten Scopes erfordern würde.
+- Unsicherheit über Merge-Sicherheit oder Branch-Delete-Sicherheit besteht.
+
+### Still forbidden without separate approval
+Auch mit Batching bleiben folgende Änderungen ohne separate Genehmigung verboten:
+- Architekturänderungen.
+- neue Dependencies.
+- Provider-SDKs.
+- Hermes-Konfigurationsänderungen.
+- `.hermes.md`.
+- MCP / Skills / Cron / Memory / Plugins.
+- Runtime-Integrationen.
+- autonome Änderungen an Quellen, Fakten oder forschungsrelevanten Aussagen.
+- Investment-/Trading-Claims.
+- Force-Push.
+- Force-Branch-Delete.
+- Tag-/Release-Erstellung.
+- Deployment-Workflows.
+- Secret-Handling.
+
+### Merge + cleanup rule for bundled runs
+Merge und Branch-Cleanup dürfen nur dann gebündelt werden, wenn eine explizite menschliche Freigabe genau für diese PR vorliegt. Branch-Cleanup muss ausschließlich mit sicherer Löschung erfolgen. Force-Delete ist verboten. Es darf kein anderer Branch als der ausdrücklich freigegebene Feature-Branch gelöscht werden. Wenn Cleanup fehlschlägt, muss Hermes berichten statt zu forcieren.
+
+### Reporting rule for bundled runs
+Auch gebündelte Runs müssen einen vollständigen Report liefern mit:
+- bestandenen und fehlgeschlagenen Gates,
+- geänderten Dateien,
+- Tests und Checks,
+- PR- oder Commit-URL,
+- Merge-Status, falls relevant,
+- Cleanup-Status, falls relevant,
+- genau einer empfohlenen nächsten Aktion.
+
 ## Critical actions that must return to ChatGPT/user
 Hermes MUSS bei folgenden Aktionen stoppen, einen vollständigen Task‑Report erzeugen und menschliche/ChatGPT‑Review anfordern:
 - Architekturänderungen oder -vorschläge mit Auswirkung auf Design/Modulstruktur.
