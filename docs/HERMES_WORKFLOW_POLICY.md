@@ -87,6 +87,14 @@ Jeder Hermes‑Task muss einen strukturierten Report liefern; dieses kompakte Fo
 - merge_readiness: READY | NOT_READY + reason
 - recommended_next_action: single clear sentence
 - chatgpt_handoff_block: compact summary for ChatGPT/human reviewer
+- web_tooling_preflight:
+  required: yes|no
+  docker_status: running|not_running|unknown
+  firecrawl_status: running|stopped|unreachable|unknown
+  searxng_status: running|stopped|unreachable|unknown
+  web_extract_status: success|failed|not_attempted
+  fallback_used: yes|no
+  failure_category: Docker not running|Firecrawl unavailable|SearXNG unavailable|env var missing|Hermes backend not configured|local LLM routing issue|page extraction issue|unknown
 
 ## Standard ChatGPT→Hermes prompt rules (verbindlich)
 Jeder Prompt von ChatGPT an Hermes MUSS folgende Konventionen einhalten:
@@ -98,8 +106,42 @@ Jeder Prompt von ChatGPT an Hermes MUSS folgende Konventionen einhalten:
 6. forbidden actions — eindeutige Aufzählung (push, merge, write_file, config set, cron create, skill publish, etc.).
 7. safety gates — Bedingungen, die erfüllt sein müssen (z. B. tests exit_code==0, no_schema_errors).
 8. stop conditions — bei Gate‑Fehlschlag: sofort stoppen, Report erstellen, human notify.
-9. exact output structure — zwingend das "Standard Hermes task report template" plus eine einzige empfohlene nächste Aktion.
-10. one next action only — am Ende genau eine atomare Handlungsempfehlung.
+9. If the task requires live web sources, include a Web Tooling Preflight section that requires Hermes to run preflight checks listed below before any web_search/web_extract/source verification or live citation checking.
+10. exact output structure — zwingend das "Standard Hermes task report template" plus eine einzige empfohlene nächste Aktion.
+11. one next action only — am Ende genau eine atomare Handlungsempfehlung.
+
+### Web Search / Web Extraction Preflight
+Add a short preflight block to prompts that need live web sources. The preflight must verify local web tooling availability and not assume LLM as primary failure cause.
+- Local tooling in use:
+  - SearXNG for web search
+  - Firecrawl for web extraction/page retrieval
+- First checks (before attempting extraction):
+  - Docker running
+  - Firecrawl container running
+  - SearXNG container running (if search required)
+  - Firecrawl API reachable
+  - SearXNG reachable
+  - Relevant env vars visible to Hermes (FIRECRAWL_API_URL, FIRECRAWL_API_KEY, SEARXNG_URL)
+  - Hermes web backend configured
+- Allowed preflight commands (check only):
+  - docker ps
+  - docker ps -a
+  - docker compose ls
+  - hermes tools
+  - hermes config check
+  - check presence only of FIRECRAWL_API_URL, FIRECRAWL_API_KEY, SEARXNG_URL
+  - safe HTTP status checks to configured local Firecrawl/SearXNG URLs
+- Forbidden preflight actions (without explicit user approval):
+  - do not start/stop/restart Docker or containers
+  - do not run docker compose up
+  - do not change Hermes config
+  - do not edit .env
+  - do not print secrets
+- Failure behavior:
+  - If Docker, Firecrawl or SearXNG is unavailable, Hermes must stop and report.
+  - Do not silently rely on local skill summaries.
+  - Do not claim primary‑source verification if web extraction failed.
+  - Report likely failure category: Docker not running | Firecrawl unavailable | SearXNG unavailable | env var missing | Hermes backend not configured | local LLM routing issue | page extraction issue | unknown
 
 ## Legal / attribution note
 - Konzepte und Muster aus Hermes dürfen als Workflow‑Ideen verwendet werden.
