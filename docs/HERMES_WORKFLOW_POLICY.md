@@ -98,6 +98,8 @@ Auch gebündelte Runs müssen einen vollständigen Report liefern mit:
 - Cleanup-Status, falls relevant,
 - genau einer empfohlenen nächsten Aktion.
 
+Für die operative Ausführung ist vor jedem gebündelten Hermes-Run zusätzlich `docs/HERMES_BATCHED_RUN_CHECKLIST.md` zu verwenden.
+
 ## Critical actions that must return to ChatGPT/user
 Hermes MUSS bei folgenden Aktionen stoppen, einen vollständigen Task‑Report erzeugen und menschliche/ChatGPT‑Review anfordern:
 - Architekturänderungen oder -vorschläge mit Auswirkung auf Design/Modulstruktur.
