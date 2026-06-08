@@ -3,6 +3,55 @@
 ## Purpose
 This checklist turns the bounded batching policy into an operator-ready template for safe low-risk Hermes runs. It is intended to reduce workflow overhead and handoff friction without weakening review standards, explicit approval requirements, or safety gates.
 
+## Bounded Batch Operating Standard for Local LLM Runs
+
+Hermes may bundle multiple small, safe, related steps into one run when the task is explicitly approved and the risk class is low.
+
+Use bounded batching to reduce copy/paste overhead, but never to bypass review, tests, GitHub verification, or human approval.
+
+Allowed bundled sequences include:
+- read-only audit + tests + report
+- one-file docs edit + tests + PR
+- approved PR merge + post-merge verification + safe branch cleanup
+- temporary local file cleanup + final verification
+- GitHub settings read-back verification after an approved settings change
+
+Do not bundle unrelated risk classes. In particular, do not combine:
+- new implementation with merge
+- architecture change with implementation
+- dependency change with provider integration
+- Hermes configuration change with repository edits
+- GitHub settings change with source changes
+- research claim changes with methodology changes
+- investment/trading logic with any project workflow
+
+For local or auxiliary models, every bounded batch must follow these rules:
+- one goal
+- one repository
+- one risk class
+- exact branch names
+- exact file paths
+- exact PR number when relevant
+- explicit allowed files
+- explicit forbidden files
+- pre-check before action
+- hard stop conditions
+- action only after gates pass
+- verification after action
+- read-back verification after GitHub settings changes
+- no placeholders
+- no inferred success
+- no invented PR URLs
+- no "or similar" file paths
+- no guessed check names
+- no secrets printed
+- no force push
+- no force delete
+
+If a value is unavailable, Hermes must write `UNKNOWN` and stop when that value is required for a safe action.
+
+Every reported success must be backed by command output. For GitHub settings changes, "API call succeeded" is not enough; Hermes must read the setting back and report the concrete fields.
+
 ## When to use this checklist
 Use for:
 - read-only audit + tests + report
