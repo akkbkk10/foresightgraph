@@ -37,6 +37,8 @@ Manual review and future Golden Set release gates are documented in [Manual Revi
 
 Data quality and future dashboard readiness are documented in [Data Quality Metrics](docs/DATA_QUALITY_METRICS.md) and [Review Dashboard Readiness](docs/REVIEW_DASHBOARD_READINESS.md).
 
+Architecture and provider decision guidance is documented in [Architecture Decision Records](docs/ARCHITECTURE_DECISION_RECORDS.md) and [Provider Evaluation Notes](docs/PROVIDER_EVALUATION_NOTES.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed

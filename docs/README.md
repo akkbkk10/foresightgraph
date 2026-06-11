@@ -13,6 +13,8 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 - [News Source Tiers](NEWS_SOURCE_TIERS.md)
 - [Review Protocol](REVIEW_PROTOCOL.md)
 - [Provider Gates](PROVIDER_GATES.md)
+- [Architecture Decision Records](ARCHITECTURE_DECISION_RECORDS.md)
+- [Provider Evaluation Notes](PROVIDER_EVALUATION_NOTES.md)
 - [Data Policy](DATA_POLICY.md)
 - [Agent Control Policy](AGENT_CONTROL_POLICY.md)
 - [Schema-Lite Data Model](SCHEMA_LITE.md)
