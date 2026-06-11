@@ -29,6 +29,8 @@ Phase 1 methodology documentation lives in `docs/`: [Evidence Rules](docs/EVIDEN
 
 The active agent and schema-lite references are [Agent Control Policy](docs/AGENT_CONTROL_POLICY.md) and [Schema-Lite Data Model](docs/SCHEMA_LITE.md).
 
+Planning references for the next Phase 1 package are [Golden Set v2 Plan](docs/GOLDEN_SET_V2_PLAN.md), [AgentTask Governance](docs/AGENT_TASK_GOVERNANCE.md), and [ProviderCandidate Governance](docs/PROVIDER_CANDIDATE_GOVERNANCE.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed
