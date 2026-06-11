@@ -6,6 +6,19 @@
 
 Public early-stage MVP scaffold. Methodology-first development.
 
+## Active Project Source
+
+The canonical active project source is [ForesightGraph Intelligence OS Roadmap v2](ForesightGraph_Intelligence_OS_Roadmap_v2.md).
+
+Use this priority order for project instructions:
+
+1. `ForesightGraph_Intelligence_OS_Roadmap_v2.md`
+2. `ForesightGraph_Codex_Prompt_Standard.md` and `docs/HERMES_WORKFLOW_POLICY.md`
+3. Individual task prompts
+4. Historical roadmap or planning documents
+
+The previous MVP roadmap in `docs/roadmap.md` is retained as historical reference.
+
 ## Core Concept
 
 ForesightGraph is an evidence-first research system that prioritizes sourced information and structured evidence collection over speculation.
