@@ -31,6 +31,8 @@ The active agent and schema-lite references are [Agent Control Policy](docs/AGEN
 
 Planning references for the next Phase 1 package are [Golden Set v2 Plan](docs/GOLDEN_SET_V2_PLAN.md), [AgentTask Governance](docs/AGENT_TASK_GOVERNANCE.md), and [ProviderCandidate Governance](docs/PROVIDER_CANDIDATE_GOVERNANCE.md).
 
+Golden Set review and benchmark planning are covered by [Golden Set Acceptance Criteria](docs/GOLDEN_SET_ACCEPTANCE_CRITERIA.md) and [Benchmark Question Design](docs/BENCHMARK_QUESTION_DESIGN.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed
