@@ -17,6 +17,8 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 - [Agent Control Policy](AGENT_CONTROL_POLICY.md)
 - [Schema-Lite Data Model](SCHEMA_LITE.md)
 - [Golden Set v2 Plan](GOLDEN_SET_V2_PLAN.md)
+- [Golden Set Acceptance Criteria](GOLDEN_SET_ACCEPTANCE_CRITERIA.md)
+- [Benchmark Question Design](BENCHMARK_QUESTION_DESIGN.md)
 - [AgentTask Governance](AGENT_TASK_GOVERNANCE.md)
 - [ProviderCandidate Governance](PROVIDER_CANDIDATE_GOVERNANCE.md)
 - [Historical MVP Roadmap](roadmap.md)
