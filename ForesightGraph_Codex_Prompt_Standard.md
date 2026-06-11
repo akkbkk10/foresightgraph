@@ -131,6 +131,12 @@ Codex darf nicht:
 - Secrets, Tokens oder private Daten ausgeben,
 - Trading-Logik, Buy/Sell/Hold-Ausgaben, Kursziele oder Broker-Integration erzeugen.
 
+## 7a. Codex-first workflow
+
+Der aktive Workflow ist Codex-first. Hermes ist nicht Teil des aktiven Workflows, sofern ein Task Hermes nicht ausdruecklich wieder freigibt.
+
+Codex darf Low-Risk-Dokumentations- oder Test-PRs nur dann selbst mergen, wenn der jeweilige Task dies ausdruecklich delegiert und alle Safety Gates bestehen. Kritische Aenderungen muessen immer stoppen und berichtet werden.
+
 ## 8. Standardvorlage fuer kontrolliert-autonome Codex-Prompts
 
 ```text
@@ -223,6 +229,7 @@ Done when:
 - Tests/checks are run or clearly reported as unavailable.
 - A Pull Request is created.
 - The final report is factual and contains no placeholders.
+- If the task explicitly delegates low-risk merge permission, Codex may merge only after every stated safety gate passes; otherwise do not merge.
 
 Final report:
 Return exactly this report:
