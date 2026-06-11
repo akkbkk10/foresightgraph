@@ -27,6 +27,8 @@ ForesightGraph is an evidence-first research system that prioritizes sourced inf
 
 Phase 1 methodology documentation lives in `docs/`: [Evidence Rules](docs/EVIDENCE_RULES.md), [News Source Tiers](docs/NEWS_SOURCE_TIERS.md), [Review Protocol](docs/REVIEW_PROTOCOL.md), [Provider Gates](docs/PROVIDER_GATES.md), and [Data Policy](docs/DATA_POLICY.md).
 
+The active agent and schema-lite references are [Agent Control Policy](docs/AGENT_CONTROL_POLICY.md) and [Schema-Lite Data Model](docs/SCHEMA_LITE.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed

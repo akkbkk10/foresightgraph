@@ -14,8 +14,10 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 - [Review Protocol](REVIEW_PROTOCOL.md)
 - [Provider Gates](PROVIDER_GATES.md)
 - [Data Policy](DATA_POLICY.md)
+- [Agent Control Policy](AGENT_CONTROL_POLICY.md)
+- [Schema-Lite Data Model](SCHEMA_LITE.md)
 - [Historical MVP Roadmap](roadmap.md)
-- [Hermes Workflow Policy](HERMES_WORKFLOW_POLICY.md)
+- [Hermes Workflow Policy](HERMES_WORKFLOW_POLICY.md) (inactive unless explicitly re-enabled)
 - [Hermes Batched Run Checklist](HERMES_BATCHED_RUN_CHECKLIST.md)
 
 ## Methodology reports
