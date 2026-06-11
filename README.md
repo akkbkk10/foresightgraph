@@ -35,6 +35,8 @@ Golden Set review and benchmark planning are covered by [Golden Set Acceptance C
 
 Manual review and future Golden Set release gates are documented in [Manual Review Workflow](docs/MANUAL_REVIEW_WORKFLOW.md) and [Golden Set Release Checklist](docs/GOLDEN_SET_RELEASE_CHECKLIST.md).
 
+Data quality and future dashboard readiness are documented in [Data Quality Metrics](docs/DATA_QUALITY_METRICS.md) and [Review Dashboard Readiness](docs/REVIEW_DASHBOARD_READINESS.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed

@@ -21,6 +21,8 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 - [Benchmark Question Design](BENCHMARK_QUESTION_DESIGN.md)
 - [Manual Review Workflow](MANUAL_REVIEW_WORKFLOW.md)
 - [Golden Set Release Checklist](GOLDEN_SET_RELEASE_CHECKLIST.md)
+- [Data Quality Metrics](DATA_QUALITY_METRICS.md)
+- [Review Dashboard Readiness](REVIEW_DASHBOARD_READINESS.md)
 - [AgentTask Governance](AGENT_TASK_GOVERNANCE.md)
 - [ProviderCandidate Governance](PROVIDER_CANDIDATE_GOVERNANCE.md)
 - [Historical MVP Roadmap](roadmap.md)
