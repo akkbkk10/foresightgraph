@@ -23,6 +23,10 @@ The previous MVP roadmap in `docs/roadmap.md` is retained as historical referenc
 
 ForesightGraph is an evidence-first research system that prioritizes sourced information and structured evidence collection over speculation.
 
+## Methodology Foundation
+
+Phase 1 methodology documentation lives in `docs/`: [Evidence Rules](docs/EVIDENCE_RULES.md), [News Source Tiers](docs/NEWS_SOURCE_TIERS.md), [Review Protocol](docs/REVIEW_PROTOCOL.md), [Provider Gates](docs/PROVIDER_GATES.md), and [Data Policy](docs/DATA_POLICY.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed
