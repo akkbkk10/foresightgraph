@@ -6,8 +6,10 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 
 ## Core documentation
 
+- [Active Roadmap v2](../ForesightGraph_Intelligence_OS_Roadmap_v2.md)
+- [Codex Prompt Standard](../ForesightGraph_Codex_Prompt_Standard.md)
 - [Architecture](architecture.md)
-- [Roadmap](roadmap.md)
+- [Historical MVP Roadmap](roadmap.md)
 - [Hermes Workflow Policy](HERMES_WORKFLOW_POLICY.md)
 - [Hermes Batched Run Checklist](HERMES_BATCHED_RUN_CHECKLIST.md)
 

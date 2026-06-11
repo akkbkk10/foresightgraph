@@ -1,5 +1,7 @@
 # Roadmap
 
+> Historical reference: this MVP roadmap is retained for context only. The canonical active project source is `../ForesightGraph_Intelligence_OS_Roadmap_v2.md`.
+
 This roadmap defines a practical MVP for ForesightGraph, focused on local evidence capture and graph-based reasoning.
 
 ## Phase 1: MVP

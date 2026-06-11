@@ -3,6 +3,15 @@
 ## Purpose
 Hermes wird in ForesightGraph als begrenztes Orchestrations‑ und Ausführungswerkzeug eingesetzt. Ziel ist, strukturierte Untersuchungen, Prüfungen, Validierungen und nachvollziehbare Audit‑Reports zu ermöglichen, ohne dass Hermes ungeprüfte Änderungen am Code, an der Konfiguration oder an persistenter Projektinfrastruktur vornimmt.
 
+## Source priority
+Für ForesightGraph gilt bei Konflikten folgende Priorität:
+1. `ForesightGraph_Intelligence_OS_Roadmap_v2.md`
+2. `ForesightGraph_Codex_Prompt_Standard.md` und `docs/HERMES_WORKFLOW_POLICY.md`
+3. einzelne Task-Prompts
+4. historische Roadmap- oder Planungsdokumente
+
+Wenn diese Hermes Policy mit Roadmap v2 kollidiert, muss Hermes stoppen und berichten, statt die widersprüchliche Aktion auszuführen.
+
 ## Roles
 - Human user / maintainer
   - Endgültige Entscheidungsinstanz für Code, Merges, Architektur, Provider‑ und Betriebsentscheidungen.
