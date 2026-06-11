@@ -19,6 +19,8 @@ ForesightGraph is an evidence-first, methodology-first, provider-neutral researc
 - [Golden Set v2 Plan](GOLDEN_SET_V2_PLAN.md)
 - [Golden Set Acceptance Criteria](GOLDEN_SET_ACCEPTANCE_CRITERIA.md)
 - [Benchmark Question Design](BENCHMARK_QUESTION_DESIGN.md)
+- [Manual Review Workflow](MANUAL_REVIEW_WORKFLOW.md)
+- [Golden Set Release Checklist](GOLDEN_SET_RELEASE_CHECKLIST.md)
 - [AgentTask Governance](AGENT_TASK_GOVERNANCE.md)
 - [ProviderCandidate Governance](PROVIDER_CANDIDATE_GOVERNANCE.md)
 - [Historical MVP Roadmap](roadmap.md)

@@ -33,6 +33,8 @@ Planning references for the next Phase 1 package are [Golden Set v2 Plan](docs/G
 
 Golden Set review and benchmark planning are covered by [Golden Set Acceptance Criteria](docs/GOLDEN_SET_ACCEPTANCE_CRITERIA.md) and [Benchmark Question Design](docs/BENCHMARK_QUESTION_DESIGN.md).
 
+Manual review and future Golden Set release gates are documented in [Manual Review Workflow](docs/MANUAL_REVIEW_WORKFLOW.md) and [Golden Set Release Checklist](docs/GOLDEN_SET_RELEASE_CHECKLIST.md).
+
 ## Local Setup
 
 1. Ensure Python 3.8+ is installed
